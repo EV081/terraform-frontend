@@ -26,13 +26,16 @@ resource "aws_amplify_app" "frontend" {
   # IAM service role
   iam_service_role_arn = var.lab_role_arn
 
-  # Build specification for a Vite/React project
+  # Build specification for a Vite/React project (requires Node 20+ for Vite 7)
   build_spec = <<-EOT
     version: 1
     frontend:
       phases:
         preBuild:
           commands:
+            - nvm install 20
+            - nvm use 20
+            - node --version
             - npm ci
         build:
           commands:
@@ -48,6 +51,7 @@ resource "aws_amplify_app" "frontend" {
 
   # Environment variables
   environment_variables = {
+    NODE_VERSION          = "20"
     VITE_API_USER_URL     = var.api_user_url
     VITE_API_PRODUCTO_URL = var.api_producto_url
     VITE_API_ORDER_URL    = var.api_order_url

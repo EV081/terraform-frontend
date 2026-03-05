@@ -36,7 +36,7 @@ github_token = "ghp_tuTokenAqui"
 
 ---
 
-## ⚙️ Configuración de variables
+## Configuración de variables
 
 Antes de desplegar, copia el archivo de ejemplo y rellena los valores reales:
 

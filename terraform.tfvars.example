@@ -1,0 +1,23 @@
+# ---------------------------------------------------------------------------
+# Copia este archivo como terraform.tfvars y rellena los valores reales
+# NUNCA subas terraform.tfvars al repositorio
+# ---------------------------------------------------------------------------
+
+# General
+app_name     = "taller-serverless-frontend"
+github_repo  = "https://github.com/EV081/taller-serverless-frontend"
+lab_role_arn = "arn:aws:iam::<ACCOUNT_ID>:role/LabRole"
+
+# GitHub Personal Access Token (PAT)
+# Crear en: https://github.com/settings/tokens → Generate new token (classic) → scope: repo
+github_token = "ghp_REEMPLAZA_CON_TU_TOKEN"
+
+# ---------------------------------------------------------------------------
+# API Gateway URLs — usadas como variables de entorno VITE_* en el build
+# ---------------------------------------------------------------------------
+api_user_url     = "https://<ID>.execute-api.us-east-1.amazonaws.com/dev"
+api_producto_url = "https://<ID>.execute-api.us-east-1.amazonaws.com"
+api_order_url    = "https://<ID>.execute-api.us-east-1.amazonaws.com/dev"
+api_cocina_url   = "https://<ID>.execute-api.us-east-1.amazonaws.com/dev"
+api_delivery_url = "https://<ID>.execute-api.us-east-1.amazonaws.com/dev"
+api_work_url     = "https://<ID>.execute-api.us-east-1.amazonaws.com"

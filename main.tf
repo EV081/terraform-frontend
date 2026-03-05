@@ -6,6 +6,10 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
+    null = {
+      source  = "hashicorp/null"
+      version = "~> 3.0"
+    }
   }
 }
 
@@ -69,4 +73,21 @@ resource "aws_amplify_branch" "main" {
   stage = "PRODUCTION"
 
   enable_auto_build = true
+}
+
+# ---------------------------------------------------------------------------
+# Dispara el primer build automáticamente al hacer terraform apply
+# ---------------------------------------------------------------------------
+resource "null_resource" "trigger_build" {
+  # Se vuelve a ejecutar si cambia el app_id o la rama
+  triggers = {
+    app_id      = aws_amplify_app.frontend.id
+    branch_name = aws_amplify_branch.main.branch_name
+  }
+
+  depends_on = [aws_amplify_branch.main]
+
+  provisioner "local-exec" {
+    command = "aws amplify start-job --app-id ${aws_amplify_app.frontend.id} --branch-name main --job-type RELEASE --region us-east-1"
+  }
 }

@@ -23,11 +23,7 @@ resource "aws_amplify_app" "frontend" {
   repository   = var.github_repo
   access_token = var.github_token
 
-  # IAM service role omitido — el LabRole de AWS Academy no permite
-  # que Amplify lo asuma (Trust Relationship no incluye amplify.amazonaws.com)
-  # iam_service_role_arn = var.lab_role_arn
-
-  # Build specification for a Vite/React project (requires Node 20+ for Vite 7)
+  # Build specification for a Vite/React project
   build_spec = <<-EOT
     version: 1
     frontend:
@@ -80,11 +76,9 @@ resource "aws_amplify_branch" "main" {
   enable_auto_build = true
 }
 
-# ---------------------------------------------------------------------------
 # Dispara el primer build automáticamente al hacer terraform apply
-# ---------------------------------------------------------------------------
 resource "null_resource" "trigger_build" {
-  # Se vuelve a ejecutar si cambia el app_id o la rama
+  # Se vuelve a ejecutar si cambia la rama
   triggers = {
     app_id      = aws_amplify_app.frontend.id
     branch_name = aws_amplify_branch.main.branch_name

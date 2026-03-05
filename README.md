@@ -36,8 +36,33 @@ github_token = "ghp_tuTokenAqui"
 
 ---
 
+## ⚙️ Configuración de variables
 
-## Inicio rápido
+Antes de desplegar, copia el archivo de ejemplo y rellena los valores reales:
+
+```bash
+cp terraform.tfvars.example terraform.tfvars
+```
+
+Luego edita `terraform.tfvars` con tus datos:
+
+| Variable | Descripción | Ejemplo |
+|---|---|---|
+| `app_name` | Nombre de la app en Amplify | `taller-serverless-frontend` |
+| `github_repo` | URL HTTPS del repo de GitHub | `https://github.com/usuario/repo` |
+| `github_token` | GitHub PAT con scope `repo` (ver sección anterior) | `ghp_xxxx...` |
+| `api_user_url` | URL base de la API de Usuarios | `https://xxxx.execute-api.us-east-1.amazonaws.com/dev` |
+| `api_producto_url` | URL base de la API de Productos | `https://xxxx.execute-api.us-east-1.amazonaws.com` |
+| `api_order_url` | URL base de la API de Órdenes | `https://xxxx.execute-api.us-east-1.amazonaws.com/dev` |
+| `api_cocina_url` | URL base de la API de Cocina | `https://xxxx.execute-api.us-east-1.amazonaws.com/dev` |
+| `api_delivery_url` | URL base de la API de Delivery | `https://xxxx.execute-api.us-east-1.amazonaws.com/dev` |
+| `api_work_url` | URL base de la API de Work | `https://xxxx.execute-api.us-east-1.amazonaws.com` |
+
+> Las variables `VITE_API_*` se inyectan como variables de entorno en el build de Amplify, por lo que el frontend las lee en tiempo de compilación.
+
+---
+
+
 
 ```bash
 # 0. Instalar Terraform (si aún no lo tienes instalado)

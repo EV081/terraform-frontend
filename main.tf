@@ -23,8 +23,9 @@ resource "aws_amplify_app" "frontend" {
   repository   = var.github_repo
   access_token = var.github_token
 
-  # IAM service role
-  iam_service_role_arn = var.lab_role_arn
+  # IAM service role omitido — el LabRole de AWS Academy no permite
+  # que Amplify lo asuma (Trust Relationship no incluye amplify.amazonaws.com)
+  # iam_service_role_arn = var.lab_role_arn
 
   # Build specification for a Vite/React project (requires Node 20+ for Vite 7)
   build_spec = <<-EOT

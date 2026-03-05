@@ -9,10 +9,40 @@ Despliega [taller-serverless-frontend](https://github.com/EV081/taller-serverles
 | Terraform | ≥ 1.3 |
 | AWS CLI | configurado con credenciales de AWS Academy |
 | Región | `us-east-1` |
+| GitHub PAT | token con scope `repo` (ver sección más abajo) |
+
+---
+
+## GitHub Personal Access Token (PAT)
+
+AWS Amplify necesita un token de GitHub para clonar el repositorio, **incluso si el repo es público**. Es una restricción de la API de AWS.
+
+### Cómo crear tu token
+
+**1.** Ve a [github.com/settings/tokens](https://github.com/settings/tokens)  
+**2.** Haz clic en **Generate new token → Generate new token (classic)**  
+**3.** Dale un nombre descriptivo, por ejemplo: `amplify-terraform`  
+**4.** En **Expiration**, elige el tiempo que prefieras  
+**5.** En **Select scopes**, marca únicamente **`repo`**  
+**6.** Haz clic en **Generate token** y **copia el token** (solo se muestra una vez)
+
+### Dónde pegarlo
+
+Abre `terraform.tfvars` y reemplaza el valor de `github_token`:
+
+```hcl
+github_token = "ghp_tuTokenAqui"
+```
+
+---
+
 
 ## Inicio rápido
 
 ```bash
+# 0. Instalar Terraform (si aún no lo tienes instalado)
+sudo snap install terraform --classic
+
 # 1. Inicializar (descarga el proveedor de AWS)
 terraform init
 

@@ -18,6 +18,12 @@ variable "lab_role_arn" {
   type        = string
 }
 
+variable "github_token" {
+  description = "GitHub Personal Access Token (PAT) con scope 'repo'"
+  type        = string
+  sensitive   = true
+}
+
 # ---------------------------------------------------------------------------
 # API Gateway URLs (VITE_ environment variables)
 # ---------------------------------------------------------------------------

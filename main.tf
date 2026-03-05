@@ -15,8 +15,9 @@ provider "aws" {
 
 # AWS Amplify App
 resource "aws_amplify_app" "frontend" {
-  name       = var.app_name
-  repository = var.github_repo
+  name         = var.app_name
+  repository   = var.github_repo
+  access_token = var.github_token
 
   # IAM service role
   iam_service_role_arn = var.lab_role_arn

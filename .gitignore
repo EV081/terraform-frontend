@@ -1,0 +1,7 @@
+# Terraform — archivos locales con secretos, nunca subir al repositorio
+terraform.tfvars
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+crash.log
